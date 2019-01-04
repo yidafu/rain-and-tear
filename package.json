@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "rian-and-tear",
+  "description": "Fuda Yi's Blog generator",
   "license": "MIT",
   "scripts": {
     "start": "node ./scripts/build.js && ./node_modules/.bin/pm2 start scripts/serve.js",
