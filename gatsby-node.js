@@ -4,9 +4,8 @@ const {
 } = require('gatsby-source-filesystem')
 const createPaginatedPages = require('gatsby-paginate')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const style_loader = require.resolve('style-loader')
-const css_loader = require.resolve('css-loader')
-const less_loader = require.resolve('less-loader')
+const postcss_loader = require.resolve('postcss-loader')
+const sass_loader = require.resolve('sass-loader')
 const _ = require('lodash')
 const crypto = require('crypto')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -247,32 +246,45 @@ exports.onCreateWebpackConfig = ({
     mode: 'development',
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src/')
+        '@': path.resolve(__dirname, 'src/'),
+        'squid': path.resolve(__dirname, 'src/Squid')
       }
     },
     module: {
       rules: [
         {
-          test: /\.less$/,
+          test: /\.scss$/,
           use: [
-            devMode ? {
-              loader: style_loader,
-            } : {
-              loader: MiniCssExtractPlugin.loader,
-            },
             {
-              loader: css_loader,
+              loader: 'style-loader',
               options: {
-                sourceMap: true,
-              },
-            },
-            {
-              loader: less_loader,
+                sourceMap: true
+              }
+            }, {
+              loader: 'css-loader',
               options: {
-                strictMath: true,
-                javascriptEnabled: true
+                sourceMap: true
               }
             },
+            {
+              loader: 'postcss-loader',
+              options: {
+                parser: 'postcss-scss',
+                plugins: (loader) => [
+                  require('postcss-import')({
+                    root: loader.resourcePath
+                  }),
+                  require('postcss-preset-env')(),
+                  require('cssnano')()
+                ]
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
           ]
         },
       ],

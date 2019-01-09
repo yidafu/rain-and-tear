@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {Link} from 'gatsby'
 import PropTypes from 'prop-types'
-import {Button, Navbar, Nav} from 'react-bootstrap'
+// import {Button, Navbar, Nav} from 'react-bootstrap'
+import Navbar from 'squid/Navbar'
+
+const {Brand, Item} = Navbar
 
 class NavBar extends Component {
   static displayName = 'NavBar'
@@ -11,16 +14,12 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">付达意的博客</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about-me">AboutMe</Nav.Link>
-            <Nav.Link href="/drink">Drink?</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+      <Navbar>
+        <Brand as={Link} to="/">付达意的博客</Brand>
+        
+        <Item as={Link} to="/">Home</Item>
+        <Item as={Link} to="/about-me">AboutMe</Item>
+        <Item as={Link} to="/drink">Drink?</Item>
       </Navbar>
     )
   }
