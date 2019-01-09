@@ -11,11 +11,10 @@ const _ = require('lodash')
 const crypto = require('crypto')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const devMode = process.env.NODE_ENV !== 'production'
-
 /**
  *  @NOTE 
  *    `createPage`的`layout`参数在 v2 中移除了   
- *     @ref https://github.com/gatsbyjs/gatsby/issues/3830
+ *     @see https://github.com/gatsbyjs/gatsby/issues/3830
  */
 exports.onCreateNode = ({
   node,
@@ -300,3 +299,4 @@ exports.onCreateWebpackConfig = ({
     ]
   })
 }
+

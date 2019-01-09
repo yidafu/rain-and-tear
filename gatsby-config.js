@@ -16,7 +16,21 @@ const config = {
         path: path.resolve(__dirname, repoDir, repoName),
       },
     },
-    'gatsby-transformer-remark',      
+    'gatsby-plugin-sharp',
+    {
+      resolve:'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+          },{
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              showLineNumbers: true,
+            }
+          }],
+      },
+    },      
   ],
 }
 

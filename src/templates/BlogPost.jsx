@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import {Row} from 'react-bootstrap'
 import PostLayout from '../layouts/PostLayout'
 import PostHeader from '../components/PostHeader'
-import PostBody from '../components/PostBody'
+import PostContainer from '../components/PostContainer'
 import PreOrNext from '../components/PreOrNext'
 
 class BlogPost extends Component {
@@ -27,7 +27,7 @@ class BlogPost extends Component {
         <PostHeader
           title={post.frontmatter.title}
         />
-        <PostBody
+        <PostContainer
           html={post.html}
         />
         <Row>

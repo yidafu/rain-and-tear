@@ -15,7 +15,7 @@ class Index extends Component {
   render() {
     
     const {data} = this.props
-    const pathContext = {
+    const pageContext = {
       group: data.allMarkdownRemark.edges,
       first: true,
       last: false,
@@ -31,7 +31,7 @@ class Index extends Component {
         // tags={data.customTagsNode.tags || []}
       >
         <MainPagination 
-          pageContext={pathContext}
+          pageContext={pageContext}
         />
       </div>
     )
@@ -70,9 +70,6 @@ export const query = graphql`
           excerpt
         }
       }
-    }
-    customTagsNode{
-      tags
     }
   }
 `
