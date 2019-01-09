@@ -1,0 +1,11 @@
+@import '../Scss/variables';
+
+  
+.squid-navbar {
+  height: $nav-height;
+  background-color: $nav-color;
+
+  a {
+    font-size: 1.5rem;
+  }
+}
