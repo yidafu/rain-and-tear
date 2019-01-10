@@ -21,7 +21,6 @@ class Category extends Component {
   renderTags (edges) {
     // 数组去重
     let categories = Array.from(new Set(edges.map( edge => edge.node.fields.category)))
-    console.log(categories)
     return (
       <ul>
         {categories.map((category, idx) => {

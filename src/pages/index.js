@@ -25,7 +25,6 @@ class Index extends Component {
         totalCount: data.allMarkdownRemark.totalCount
       }
     }
-    console.log('index.js render()')
     return (
       <div 
         // tags={data.customTagsNode.tags || []}

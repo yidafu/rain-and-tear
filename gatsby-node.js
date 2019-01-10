@@ -6,6 +6,8 @@ const createPaginatedPages = require('gatsby-paginate')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcss_loader = require.resolve('postcss-loader')
 const sass_loader = require.resolve('sass-loader')
+const style_loader = require.resolve('style-loader')
+const css_loader = require.resolve('css-loader')
 const _ = require('lodash')
 const crypto = require('crypto')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -255,19 +257,21 @@ exports.onCreateWebpackConfig = ({
         {
           test: /\.scss$/,
           use: [
-            {
-              loader: 'style-loader',
+            devMode ? {
+              loader: style_loader,
               options: {
                 sourceMap: true
               }
+            } : {
+              loader: MiniCssExtractPlugin.loader,
             }, {
-              loader: 'css-loader',
+              loader: css_loader,
               options: {
                 sourceMap: true
               }
             },
             {
-              loader: 'postcss-loader',
+              loader: postcss_loader,
               options: {
                 parser: 'postcss-scss',
                 plugins: (loader) => [
@@ -280,7 +284,7 @@ exports.onCreateWebpackConfig = ({
               }
             },
             {
-              loader: 'sass-loader',
+              loader: sass_loader,
               options: {
                 sourceMap: true
               }

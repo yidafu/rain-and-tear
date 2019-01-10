@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import {Row} from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
 import PostLayout from '../layouts/PostLayout'
 import PostHeader from '../components/PostHeader'
 import PostContainer from '../components/PostContainer'
 import PreOrNext from '../components/PreOrNext'
-
+import { Helmet } from 'react-helmet'
+import {author} from '../../config'
 class BlogPost extends Component {
   static displayname = 'BlogPost'
   static propTypes = { 
@@ -24,6 +25,12 @@ class BlogPost extends Component {
     
     return (
       <PostLayout>
+        <Helmet>
+          <title>{post.frontmatter.title}</title>
+          <mete name="author" content={author} />
+          <meta name="description" content={post.excerpt} />
+          <meta name="keywords" content={post.frontmatter.tags.join(',')}></meta>
+        </Helmet>
         <PostHeader
           title={post.frontmatter.title}
         />
@@ -46,8 +53,10 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        title
+        title,
+        tags
       }
+      excerpt
     }
   }
 `

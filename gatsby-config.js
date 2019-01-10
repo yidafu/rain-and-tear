@@ -3,7 +3,6 @@ const blog = require('./config')
 
 let { repoDir, repoName } = blog
 
-console.log('|=====>',path.resolve(__dirname, repoDir, repoName))
 const config = {
   siteMetadata: {
     title: 'YDF\'s Blog',

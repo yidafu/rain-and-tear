@@ -30,7 +30,8 @@
     "rc-pagination": "^1.17.2",
     "react": "^16.5.2",
     "react-bootstrap": "^1.0.0-beta.3",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.1.0",

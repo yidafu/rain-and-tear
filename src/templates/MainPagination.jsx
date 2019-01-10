@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 
 import MainLayout from '@/layouts/MainLayout'
 import ArticleItem from '@/components/ArticleItem'
 import Pagination from '@/components/Pagination'
-
+import { title, author, description } from '../../config'
 
 export default class MainPagination extends Component {
   static displayname = 'MainPagination'
@@ -30,6 +31,12 @@ export default class MainPagination extends Component {
     const { group, index, first, last, pageCount, additionalContext } = pageContext
     return (
       <MainLayout >
+        <Helmet>
+          <title>{title}</title>
+          <mete name="author" content={author} />
+          <meta name="description" content={description} />
+          <meta name="keywords" content='付达意,fudayi,blog,frontend' />
+        </Helmet>
         <div style={styles.content}>
           {group.map(({ node }) => {
             return (
