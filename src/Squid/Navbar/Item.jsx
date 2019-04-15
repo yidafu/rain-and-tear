@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import makePrefix from '../Utils/makePrefix'
+
 export default class Item extends Component {
   static propTypes = {
-    as: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    as: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     children: PropTypes.node,
     className: PropTypes.string,
     prefix: PropTypes.string,
@@ -13,18 +15,18 @@ export default class Item extends Component {
   }
   static defaultProps = {
     as: 'a',
-    prefix: 'pomelo',
     type: 'default',
     size: 'md',
   }
 
   render() {
     const { as, children, className, prefix, type, size, ...restProps } = this.props
-    const classes = classNames(prefix, className, {
-      [`${prefix}-${type}`]: type,
-      [`${prefix}-${size}`]: size,
+    const prefixCls = makePrefix('navbar-item', prefix)
+    const classes = classNames(prefixCls, className, {
+      [`${prefixCls}-${type}`]: type,
+      [`${prefixCls}-${size}`]: size,
     })
-    const Component = as || 'button'
+    const Component = as || 'a'
     return (
       <Component className={classes} {...restProps}>
         {children}

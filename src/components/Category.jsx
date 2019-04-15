@@ -4,6 +4,10 @@ import { Link, StaticQuery, graphql} from 'gatsby'
 
 import str2Color from '@/utils/str2Color'
 
+const categoryItemStyle = {
+  padding: 8,
+  borderRadius: 2,
+}
 class Category extends Component {
   static dislayName = 'templates'
 
@@ -27,7 +31,7 @@ class Category extends Component {
           let hex = str2Color(category)
           return (
             <Link to={`/categories/${category}`}  key={idx}>
-              <p style={{backgroundColor: hex}}>{category}</p>
+              <p style={{backgroundColor: hex, ...categoryItemStyle}}>{category}</p>
             </Link>
           )
         })}

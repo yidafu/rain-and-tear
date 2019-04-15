@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import logo from './logo.png'
 export default class HTML extends React.Component {
   render() {
     return (
@@ -12,6 +12,7 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <link rel="shortcut icon" href={logo} type="image/x-icon" />
           <link
             rel = "stylesheet"
             href = "https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"

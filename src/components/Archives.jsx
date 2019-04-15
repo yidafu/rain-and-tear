@@ -34,7 +34,7 @@ class Category extends Component {
           let hex = str2Color(archive)
           return (
             <Link to={`/archives/${archive}`}  key={idx}>
-              <p style={{backgroundColor: hex}}>{archive}</p>
+              <p style={{backgroundColor: hex, padding: 8, borderRadius: 2}}>{archive}</p>
             </Link>
           )
         })}

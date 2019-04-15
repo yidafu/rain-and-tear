@@ -7,6 +7,7 @@ import Archives from './Archives'
 function Tab(props) {
   return props.children
 } 
+
 export default class Logo extends Component {
   static displayName = 'LeftSide'
   

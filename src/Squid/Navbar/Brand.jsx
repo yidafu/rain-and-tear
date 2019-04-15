@@ -6,7 +6,7 @@ import makePrefix from '../Utils/makePrefix'
 
 export default class Brand extends Component {
   static propTypes = {
-    as: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    as: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     children: PropTypes.node,
     className: PropTypes.string,
     prefix: PropTypes.string,

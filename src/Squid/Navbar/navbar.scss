@@ -4,8 +4,15 @@
 .squid-navbar {
   height: $nav-height;
   background-color: $nav-color;
-
-  a {
+  .squid-navbar-brand,.squid-navbar-item {
+    padding: 0.5rem;
+  }
+  .squid-navbar-brand {
+    line-height: 2.5rem;
     font-size: 1.5rem;
+  }
+
+  .squid-navbar-item {
+    font-size: 1rem;
   }
 }
