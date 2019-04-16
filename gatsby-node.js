@@ -74,6 +74,11 @@ exports.createPages = ({
               ne: "Null"
             }
           }
+          frontmatter: {
+            status: {
+              eq: "publish"
+            }
+          }
         }) {
           totalCount
           edges {
@@ -83,6 +88,8 @@ exports.createPages = ({
                 title
                 tags
                 date
+                excerpt
+                status
               }
               fields {
                 slug
@@ -108,7 +115,7 @@ exports.createPages = ({
         edges,
         totalCount
       } = result.data.allMarkdownRemark
-      
+      console.log(edges)
       // 第一步：找到所有的 Tags 
       let tags = edges
         // 去掉所有是 null 的tags 
@@ -134,19 +141,19 @@ exports.createPages = ({
       })
       
       // 第四步：创建页面
-      TagNodes.forEach(tagNode => {
-        createPaginatedPages({
-          edges: tagNode.nodes,
-          createPage: createPage,
-          pageTemplate: path.resolve('./src/templates/MainPagination.jsx'),
-          pageLength: 10,
-          pathPrefix: `tags/${tagNode.tag}`,
-          context: {
-            totalCount: tagNode.nodes.length,
-            tags: uniqTags,
-          }
-        })
-      })
+      // TagNodes.forEach(tagNode => {
+      //   createPaginatedPages({
+      //     edges: tagNode.nodes,
+      //     createPage: createPage,
+      //     pageTemplate: path.resolve('./src/templates/MainPagination.jsx'),
+      //     pageLength: 10,
+      //     pathPrefix: `tags/${tagNode.tag}`,
+      //     context: {
+      //       totalCount: tagNode.nodes.length,
+      //       tags: uniqTags,
+      //     }
+      //   })
+      // })
 
       createNode({
         tags: uniqTags,
@@ -170,6 +177,7 @@ exports.createPages = ({
         next,
         previous
       }) => {
+        console.log(edges)
         const preSlug = previous ? previous.fields.slug : ''
         const nextSlug = next ? next.fields.slug : ''
         // 创建文章内容页
@@ -198,40 +206,40 @@ exports.createPages = ({
         }
       })
 
-      let categories = _.groupBy( edges, 'node.fields.category')
-      Object.keys(categories).forEach(categoryName => {
-        let edegs = categories[categoryName]
-        createPaginatedPages({
-          edges: edegs,
-          createPage: createPage,
-          pageTemplate: path.resolve('./src/templates/MainPagination.jsx'),
-          pageLength: 10,
-          pathPrefix: `categories/${categoryName}`,
-          context: {
-            totalCount: edegs.length,
-            category: categoryName,
-          }
-        })
-      })
-      let archives = _.groupBy(edges, function(edge) {
-        let postCreatedAt = new Date(edge.node.frontmatter.date)
-        return postCreatedAt.getFullYear() + '/' + postCreatedAt.getMonth()
-      })
+      // let categories = _.groupBy( edges, 'node.fields.category')
+      // Object.keys(categories).forEach(categoryName => {
+      //   let edegs = categories[categoryName]
+      //   createPaginatedPages({
+      //     edges: edegs,
+      //     createPage: createPage,
+      //     pageTemplate: path.resolve('./src/templates/MainPagination.jsx'),
+      //     pageLength: 10,
+      //     pathPrefix: `categories/${categoryName}`,
+      //     context: {
+      //       totalCount: edegs.length,
+      //       category: categoryName,
+      //     }
+      //   })
+      // })
+      // let archives = _.groupBy(edges, function(edge) {
+      //   let postCreatedAt = new Date(edge.node.frontmatter.date)
+      //   return postCreatedAt.getFullYear() + '/' + postCreatedAt.getMonth()
+      // })
       
-      Object.keys(archives).forEach(date => {
-        let edegs = archives[date]
-        createPaginatedPages({
-          edges: edegs,
-          createPage: createPage,
-          pageTemplate: path.resolve('./src/templates/MainPagination.jsx'),
-          pageLength: 10,
-          pathPrefix: `archives/${date}`,
-          context: {
-            totalCount: edegs.length,
-            date,
-          }
-        })
-      })
+      // Object.keys(archives).forEach(date => {
+      //   let edegs = archives[date]
+      //   createPaginatedPages({
+      //     edges: edegs,
+      //     createPage: createPage,
+      //     pageTemplate: path.resolve('./src/templates/MainPagination.jsx'),
+      //     pageLength: 10,
+      //     pathPrefix: `archives/${date}`,
+      //     context: {
+      //       totalCount: edegs.length,
+      //       date,
+      //     }
+      //   })
+      // })
       resolve()
     })
   })

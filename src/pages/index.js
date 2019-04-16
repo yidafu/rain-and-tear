@@ -51,6 +51,11 @@ export const query = graphql`
             ne: "Null"
           }
         }
+        frontmatter: {
+          status: {
+            eq: "publish"
+          }
+        }
       }
       limit: 10
     ) {
@@ -61,6 +66,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
+            excerpt
           }
           fields {
             slug

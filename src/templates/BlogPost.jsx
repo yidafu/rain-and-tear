@@ -37,10 +37,10 @@ class BlogPost extends Component {
         <PostContainer
           html={post.html}
         />
-        <Row>
+        <div style={{display: 'flex', justifyContent: 'space-between', padding: 10}}>
           <PreOrNext disabled={pre == ''} pre href={pre} />
           <PreOrNext disabled={next == ''} next href={next} />
-        </Row>
+        </div>
       </PostLayout>
       
     )

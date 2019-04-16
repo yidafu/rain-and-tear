@@ -13,11 +13,12 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <link rel="shortcut icon" href={logo} type="image/x-icon" />
-          <link
+          <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></link>
+          {/* <link
             rel = "stylesheet"
             href = "https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"
             crossOrigin = "anonymous" 
-          />
+          /> */}
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

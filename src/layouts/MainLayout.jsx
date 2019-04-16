@@ -31,10 +31,10 @@ class MainLayout extends Component {
 
         <Container> 
 
-          <Row>
-            <Col md={3} sm={3}>
+          <Row style={{justifyContent:'center'}}>
+            {/* <Col md={3} sm={3}>
               <LeftSide />
-            </Col>
+            </Col> */}
             <Col md={9}  sm={9}>
               {children}
             </Col>

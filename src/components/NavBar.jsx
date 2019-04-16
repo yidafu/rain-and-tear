@@ -7,7 +7,7 @@ import Navbar from 'squid/Navbar'
 const {Brand, Item} = Navbar
 
 class NavBar extends Component {
-  static displayName = 'NavBar'
+  static displayName = 'Navbar'
 
   static propTypes = { 
   }
@@ -17,9 +17,9 @@ class NavBar extends Component {
       <Navbar>
         <Brand as={Link} to="/">付达意的博客</Brand>
         
-        <Item as={Link} to="/">Home</Item>
-        <Item as={Link} to="/about-me">AboutMe</Item>
-        <Item as={Link} to="/drink">Drink?</Item>
+        {/* <Item as={Link} to="/posts">Post</Item> */}
+        <Item href="https://github.com/yidafu">Github</Item>
+        {/* <Item as={Link} to="/drink">Drink?</Item> */}
       </Navbar>
     )
   }

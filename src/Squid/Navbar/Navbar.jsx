@@ -9,15 +9,23 @@ export default class Navbar extends Component {
   }
 
   render() {
-    const { className, prefix, theme } = this.props
+    const { className, prefix, theme, children } = this.props
     const prefixCls = makePrefix('navbar', prefix)
     const classes = classNames(prefixCls, className, {
       [`${prefixCls}-theme`]: theme,
     })
+    const [brand, ...items] = children
     return (
-      <nav className={classes}>
-        {this.props.children}
-      </nav>
+      <header>
+        <div  className={classes}>
+          <div>
+            {brand}
+          </div>
+          <nav>
+            {items}
+          </nav>
+        </div>
+      </header>
     )
   }
 }

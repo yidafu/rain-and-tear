@@ -39,23 +39,24 @@ export default class MainPagination extends Component {
         </Helmet>
         <div style={styles.content}>
           {group.map(({ node }) => {
+            console.log(node)
             return (
               <ArticleItem
                 key={node.id}
                 to={node.fields.slug}
                 title={node.frontmatter.title}
-                content={node.excerpt}
+                content={node.frontmatter.excerpt || 'void'}
                 hideOnSinglePage={true}
               />
             )
           })}
         </div>
-        <Pagination
+        {/* <Pagination
           total={additionalContext.totalCount}
           pageSize={10}
           current={index}
           onChange={this.handleChange}
-        />
+        /> */}
       </MainLayout>
     )
   }

@@ -26,9 +26,6 @@ export default class ArticleItem extends Component {
             {content}
           </p>
         </div>
-        <p>
-          Read More
-        </p>
       </div>
     )
   }

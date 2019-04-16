@@ -39,3 +39,8 @@
   min-width: 100%;
   /* 2 */
 }
+
+a,
+a:hover {
+  color: #000;
+}

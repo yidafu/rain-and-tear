@@ -30,7 +30,7 @@ export default class PostLayout extends Component {
         <Container> 
 
           <Row>
-            <Col md={{span: 8, offset: 2}}>
+            <Col lg={{span: 8, offset: 2}}>
               {children}
             </Col>
           </Row>
